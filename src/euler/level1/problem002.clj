@@ -16,10 +16,9 @@
 (defn fib [n]
 	(loop [n n
 		fib [1 2]]
-		(let [next-element (get-next-element fib)]
-			(if (another-element? n next-element)
+			(if (another-element? n (get-next-element fib))
 				fib
-				(recur (dec n) (conj fib next-element))))))
+				(recur (dec n) (conj fib (get-next-element fib))))))
 
 
 (defn euler-2 [n]
