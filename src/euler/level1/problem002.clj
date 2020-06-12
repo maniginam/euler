@@ -22,8 +22,8 @@
 
 
 (defn euler-2 [n]
-	(cond (= n 0) "zero elements"
-		(= n 1) "no evens"
+	(cond (= n 0) 0
+		(= n 1) 0
 		:else
 			(let [evens (filter even? (fib n))]
 			(apply + evens))))
