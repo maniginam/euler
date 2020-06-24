@@ -10,8 +10,7 @@
               (should= [9 0 0 9] (int-to-seq 9009))
               (should= [8 0 9] (int-to-seq 908))
               (should= [3 2 1 9] (int-to-seq 9123))
-              (should= [0 0 0 1] (int-to-seq 1000))
-              )
+              (should= [0 0 0 1] (int-to-seq 1000)))
 
           (it "checks for palindrome"
               (should (palindrome? []))
@@ -20,11 +19,6 @@
               (should (palindrome? [9 0 0 9]))
               (should-not (palindrome? [9 0 8]))
               (should-not (palindrome? [9 1 2 3])))
-
-          ;(it "finds first palindrome in a sequence"
-          ;    (should-be-nil (find-first-palindrome []))
-          ;    (should-be-nil (find-first-palindrome [1122]))
-          ;    (should= 9009 (find-first-palindrome [9900 9009 9008 9007])))
 
           (it "converts seqs to ints"
               (should-be-nil (seq-to-int []))

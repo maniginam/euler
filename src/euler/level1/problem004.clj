@@ -35,37 +35,10 @@
         palindromes)))
 
 (defn find-max-palindrome [palindromes]
-  (apply max palindromes)
-  )
+  (apply max palindromes))
 
 (defn euler-4 [digits]
   (let [start (int (Math/pow 10 (dec digits)))
         stop (int (Math/pow 10 digits))
         multiples (reverse (range start stop))]
     (find-max-palindrome (find-palindromes start stop multiples))))
-
-
-
-;(let [multiples (reverse (range 1 (Math/pow 10 digits)))
-;      test-values (map #(* % multiples) multiples)]
-;  (first (filter palindrome? (map #(int-to-seq %) test-values)))
-;  )
-
-;(defn find-first-palindrome [seq]
-;  (let [palindromes (filter palindrome? (map #(int-to-seq %) seq))
-;        palindrome-string (string/join (first palindromes))]
-;    (if (string/blank? palindrome-string)
-;      nil
-;      (Integer/parseInt palindrome-string))))
-
-
-;(loop [max-multiple (- (Math/pow 10 digits) 1)
-;       mult-1 max-multiple
-;       mult-2 max-multiple
-;       test-value (* mult-1 mult-2)]
-;  (if (palindrome? test-value)
-;    test-value
-;    (cond (= test-value (* (Math/pow 10 (- digits 1)) 2)) max-multiple
-;          (> (- mult-1 mult-2) 10) (do (- mult-1 1) (+ mult-2 10))
-;          ))
-;  )
