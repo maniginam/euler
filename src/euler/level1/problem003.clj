@@ -1,5 +1,16 @@
 (ns euler.level1.problem003)
 
+;first function [prime-factors] is my take on the prime factor kata; probably can still be improved some, but it's a start
+(defn prime-factors [n]
+			(loop [factors []
+						 factor 2
+						 n n]
+						(if (> n 1)
+							(if (= 0 (rem n factor))
+								(recur (conj factors factor) factor (/ n factor))
+								(recur factors (inc factor) n))
+							factors)))
+
 (defn next-factor [n]
 	(loop [factor 2]
 		(cond (= n factor) n
