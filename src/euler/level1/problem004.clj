@@ -10,7 +10,7 @@
 (defn calc-products [nums]
       (let [products (map #(map (partial * %) nums) nums)]
            (sequence cat products)))
-      ;(map #(map * %) nums))
+
 
 (defn palindrome? [num]
       (let [num-reversed (reverse num)]
