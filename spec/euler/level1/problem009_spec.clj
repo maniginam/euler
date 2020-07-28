@@ -15,16 +15,16 @@
               (should= 3 (sqrt 9))
               (should= 5 (sqrt 25)))
 
-          (it "gets all squares in range"
-              (should= [4 9 16 25 36 49 64 81 100] (get-squares 10))
-              (should= [4 9 16 25 36 49 64 81 100 121 144 169 196 225
-                        256 289 324 361 400 441 484 529 576 625] (get-squares 25)))
-
           (it "tests for perfect square"
               (should (is-perfect-square? 4))
               (should-not (is-perfect-square? 3))
               (should (is-perfect-square? 25))
               (should-not (is-perfect-square? 21)))
+
+          (it "gets all squares in range"
+              (should= [4 9 16 25 36 49 64 81 100] (get-squares 10))
+              (should= [4 9 16 25 36 49 64 81 100 121 144 169 196 225
+                        256 289 324 361 400 441 484 529 576 625] (get-squares 25)))
 
           (it "gets all triples with numbers in range n"
               (should= [] (get-triples 3))
