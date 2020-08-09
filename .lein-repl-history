@@ -16,3 +16,4 @@
 (filter [1 2 3 4] [2 4])
 (get-squares 4)
 (+ 2 2)
+(rest [1])
