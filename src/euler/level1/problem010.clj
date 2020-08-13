@@ -1,36 +1,24 @@
 (ns euler.level1.problem010)
 
-(defn test-candidate [candidate primes]
-  (loop [primes-to-test primes
-         test-prime (first primes)
-         prime 0]
-    (if (empty? primes-to-test)
-      (if (not (zero? prime))
-        candidate
-        prime)
-      (if (zero? (rem candidate test-prime))
-        (recur [] test-prime 0)
-        (recur (rest primes-to-test) (first (rest primes-to-test)) test-prime)))))
+(defn return-next-prime [n]
+  (loop [n n
+         divisor 3
+         max-divisor (Math/sqrt n)]
+    (cond (> divisor max-divisor) n
+          (zero? (rem n divisor)) (recur (+ n 2) 3 (Math/sqrt (+ n 2)))
+          :else (recur n (+ divisor 2) max-divisor))))
 
-(defn primes-less-than-n [n]
-  (cond (<= n 2) []
-        (= n 3) [2]
-        :else
-        (let [nums (range 3 n)]
-          (loop [primes [2 3]
-                 candidates (filter odd? nums)]
-            (if (empty? candidates)
-              primes
-              (let [candidate (first candidates)]
-                (if (zero? (test-candidate candidate primes))
-                  (recur primes (rest candidates))
-                  (recur (conj primes candidate) (rest candidates)))))))))
+(defn next-prime [n]
+  (if (= n 2) (inc n) (return-next-prime (+ n 2))))
+
+(defn primes
+  ([] (primes 2))
+  ([n] (if (< n 2000000) (lazy-seq (cons n (primes (next-prime n)))))))
 
 (defn sum-of-primes [n]
   (cond (<= n 2) 0
         (= n 3) 2
-        :else (apply + (primes-less-than-n n))))
-
+        :else (apply + (take n (primes)))))
 
 
 

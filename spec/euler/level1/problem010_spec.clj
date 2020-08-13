@@ -9,24 +9,20 @@
 
 (describe "Euler Problem #10"
 
-          (it "gets all prime numbers < n"
-              (should= [] (primes-less-than-n 1))
-              (should= [] (primes-less-than-n 2))
-              (should= [2] (primes-less-than-n 3))
-              (should= [2 3] (primes-less-than-n 4))
-              (should= [2 3 5 7] (primes-less-than-n 10)))
+  (it "finds all primes < n using lazy-seq"
+      (should= [2] (take 1 (primes)))
+      (should= [2 3] (take 2 (primes)))
+      (should= [2 3 5] (take 3 (primes)))
+      (should= [2 3 5 7] (take 4 (primes)))
+      (should= [2 3 5 7 11 13 17 19 23 29] (take 10 (primes))))
 
-          (it "gets the sum of all primes < n"
-              (should= 0 (sum-of-primes 1))
-              (should= 0 (sum-of-primes 2))
-              (should= 2 (sum-of-primes 3))
-              (should= 17 (sum-of-primes 10))
-              ;(should= 2 (sum-of-primes 2000000))
-              ))
-
-          ;(it "gets time taken to compute sum-of-primes as well as euler-10"
-          ;    (time (sum-of-primes 2000000))
-          ;)
+  (it "gets the sum of all primes < n"
+      (should= 0 (sum-of-primes 1))
+      (should= 0 (sum-of-primes 2))
+      (should= 2 (sum-of-primes 3))
+      (should= 17 (sum-of-primes 4))
+      ;(should= 142913828922 (sum-of-primes 2000000))
+      ))
 
 (run-specs)
 
