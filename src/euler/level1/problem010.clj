@@ -9,7 +9,7 @@
           :else (recur n (+ divisor 2) max-divisor))))
 
 (defn next-prime [n]
-  (if (= n 2) (inc n) (return-next-prime (+ n 2))))
+  (if (<= n 2) (inc n) (return-next-prime (+ n 2))))
 
 (defn primes
   ([] (primes 2))
